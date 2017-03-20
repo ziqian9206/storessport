@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="sportsStore">
+	<head>
+		<meta charset="UTF-8">
+		<title>SportsStore</title>
+		<!--<script src="../node_modules/angular/angular.js"></script>-->
+		<script src="angular.js"></script>
+		<link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap-theme.css"/>
+		
+		<script>
+			//声明依赖后，再script引入依赖模块
+			
+			angular.module("sportsStore",["customFilters","cart","ngRoute"])
+			.config(['$routeProvider',function($routeProvider){
+				$routeProvider.when("/placeorder",{
+					templateUrl:"placeorder.html"
+				});
+				$routeProvider.when("/complete",{
+					templateUrl:"thankYou.html"
+				});
+				$routeProvider.when("/checkout",{
+					templateUrl:"checkoutSummary.html"
+				});
+				$routeProvider.when("/products",{
+					templateUrl:"productList.html"
+				});
+				$routeProvider.otherwise({
+					templateUrl:"productList.html"
+				});
+			}])
+			
+			
+		</script>
+		<script src="controllers.js"></script>
+		<script src="filters.js"></script>
+		<script src="cart.js"></script>
+		<script src="angular-route.js"></script>
+		<script src="checkoutController.js"></script>
+		<!--<script src="../node_modules/angular/angular-route.js"></script>-->
+	</head>
+	<body ng-controller="sportsStoreCtrl">
+		<div class="navbar navbar-inverse">
+			<a href="" class="navbar-brand">SPORTS STORE</a>
+			<cart-summary />
+		</div>
+		<!--<div class="alert alert-danger" ng-show="data.error">
+			Error({{data.error.status}}).The product data was not loaded.
+			<a href="/app.html" class="alert-link">Click here to try again</a>
+		</div>-->
+		<!--<ng-include src="'productList.html'"></ng-include>-->
+		<ng-view></ng-view>
+		<p>完整url路径: <span>{{absurl}}</span></p>
+	</body>
+</html>

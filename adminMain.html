@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>adminMain</title>
+</head>
+<body>
+	<div class="panel panel-default row" ng-controller="mainCtrl">
+		<div class="col-xs-3 panel-body">
+			<a ng-repeat="item in screens" class="btn btn-block btn-default"ng-class="{'btn-primary':item==cunrrent}"ng-click="setScreen($index)">
+				{{item}}
+			</a>
+		</div>
+		<div class="col-xs-8 panel-body">
+			<div ng-include="getScreen()" />
+			
+		</div>
+	</div>
+</body>
+</html>
